@@ -198,6 +198,13 @@ public class Item
     public static Item recordWard = (new ItemRecord(2009, "ward")).setUnlocalizedName("record").setTextureName("record_ward");
     public static Item record11 = (new ItemRecord(2010, "11")).setUnlocalizedName("record").setTextureName("record_11");
     public static Item recordWait = (new ItemRecord(2011, "wait")).setUnlocalizedName("record").setTextureName("record_wait");
+    
+    // START - NOUVEAUX ITEMS
+    
+    public static Item rubis = (new Item(170)).setName("Rubis").setCreativeTab(CreativeTabs.tabMaterials).setTextureName("rubis");
+    public static Item appleRubis = (new ItemAppleRubis(171, 5, 0.3F, false)).setAlwaysEdible().setPotionEffect(Potion.regeneration.id, 5, 1, 1.0F).setName("Rubis apple").setTextureName("apple_rubis");
+    
+    // END - NOUVEAUX ITEMS
 
     /** The ID of this item. */
     public final int itemID;

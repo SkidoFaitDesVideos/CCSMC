@@ -225,6 +225,9 @@ public class Block
     /** ID of the block. */
     public final int blockID;
 
+    /** Nom du bloc */
+    public String blockName = null;
+
     /** Indicates how many hits it takes to break a block. */
     protected float blockHardness;
 
@@ -1110,12 +1113,18 @@ public class Block
         return this;
     }
 
+    public Block setName(String par1Str)
+    {
+        this.blockName = par1Str;
+        return this;
+    }
+
     /**
      * Gets the localized name of this block. Used for the statistics page.
      */
     public String getLocalizedName()
     {
-        return StatCollector.translateToLocal(this.getUnlocalizedName() + ".name");
+        return (this.blockName == null) ? StatCollector.translateToLocal(this.getUnlocalizedName() + ".name") : this.blockName;
     }
 
     /**
@@ -1123,7 +1132,7 @@ public class Block
      */
     public String getUnlocalizedName()
     {
-        return "tile." + this.unlocalizedName;
+        return (this.blockName == null) ? "tile." + this.unlocalizedName : this.blockName;
     }
 
     /**

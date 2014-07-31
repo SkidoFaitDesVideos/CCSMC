@@ -202,6 +202,9 @@ public class Item
     /** The ID of this item. */
     public final int itemID;
 
+    /** Nom de l'item */
+    public String itemName = null;
+
     /** Maximum size of the stack. */
     protected int maxStackSize = 64;
 
@@ -415,6 +418,15 @@ public class Item
     }
 
     /**
+     * Défini le nom d'un item
+     */
+    public Item setName(String par1Str)
+    {
+        this.itemName = par1Str;
+        return this;
+    }
+
+    /**
      * Translates the unlocalized name of this item, but without the .name suffix, so the translation fails and the
      * unlocalized name itself is returned.
      */
@@ -429,7 +441,7 @@ public class Item
      */
     public String getUnlocalizedName()
     {
-        return "item." + this.unlocalizedName;
+        return (this.itemName == null) ? "item." + this.unlocalizedName : this.itemName;
     }
 
     /**
@@ -438,7 +450,7 @@ public class Item
      */
     public String getUnlocalizedName(ItemStack par1ItemStack)
     {
-    	return "item." + this.unlocalizedName;
+    	return (this.itemName == null) ? "item." + this.unlocalizedName : this.itemName;
     }
 
     public Item setContainerItem(Item par1Item)
@@ -479,12 +491,12 @@ public class Item
 
     public String getStatName()
     {
-    	return StatCollector.translateToLocal(this.getUnlocalizedName() + ".name");
+    	return (this.itemName == null) ? StatCollector.translateToLocal(this.getUnlocalizedName() + ".name") : this.itemName;
     }
 
     public String getItemStackDisplayName(ItemStack par1ItemStack)
     {
-    	return StatCollector.translateToLocal(this.getUnlocalizedName(par1ItemStack) + ".name");
+    	return (this.itemName == null) ? StatCollector.translateToLocal(this.getUnlocalizedName(par1ItemStack) + ".name") : this.itemName;
     }
 
     public int getColorFromItemStack(ItemStack par1ItemStack, int par2)
@@ -564,7 +576,7 @@ public class Item
 
     public String getItemDisplayName(ItemStack par1ItemStack)
     {
-    	return ("" + StatCollector.translateToLocal(this.getUnlocalizedNameInefficiently(par1ItemStack) + ".name")).trim();
+    	return (this.itemName == null) ? ("" + StatCollector.translateToLocal(this.getUnlocalizedNameInefficiently(par1ItemStack) + ".name")).trim() : this.itemName;
     }
 
     public boolean hasEffect(ItemStack par1ItemStack)
